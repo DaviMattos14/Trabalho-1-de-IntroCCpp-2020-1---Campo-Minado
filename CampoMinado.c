@@ -45,7 +45,7 @@ void GerarBombas(){
     /* campoSYS[0][0] = 42; Sempre tem uma bomba na posição 0 0, pra casos de teste*/
 
     /* Preenchendo a matriz com as bombas*/
-    for (i = 0; i < 9; i++)
+    for (i = 0; i < 10; i++)
     {   
         fileira = rand() % 9;
         coluna = rand() % 9;
@@ -179,7 +179,7 @@ void RevelarCampo(int linha, int coluna){
         }
        return; 
     }
-    else if (campoSYS[linha][coluna] != 120 && campoSYS[linha][coluna] != 42)
+    else if (campoSYS[linha][coluna] != 120 && campoSYS[linha][coluna] != 42 && (49 <= campoSYS[linha][coluna] <= 57))
     {
         campoUSER[linha][coluna] = campoSYS[linha][coluna];
         campoSYS[linha][coluna] = 120;
