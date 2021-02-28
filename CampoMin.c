@@ -28,7 +28,7 @@ void PreencherMatriz(){
     for (i = 0; i < 10; i++){
         for (j = 0; j < 10; j++)
         {
-            campoUSER[i][j] = -60;
+            campoUSER[i][j] = 196;
             campoSYS[i][j] = 32;
         }
     }
@@ -157,7 +157,7 @@ void RevelarCampo(int linha, int coluna){
                     {
                         RevelarCampo(i,j);
                     }
-                    else if (campoSYS[i][j] != 120 && campoSYS[i][j] != 42 && j >= 0 && j <= 8 && ('1' <= campoSYS[i][coluna] <= '9'))
+                    else if (campoSYS[i][j] != 120 && campoSYS[i][j] != 42 && j >= 0 && j <= 8 && (49 <= campoSYS[i][coluna] <= 57))
                     {
                         campoUSER[i][j] = campoSYS[i][j];
                         campoSYS[i][j] = 120;
@@ -235,7 +235,7 @@ int Jogada(int linha, int coluna){
         {
             return 0;
         }
-        return 0;
+        
     }
 }
 
@@ -261,7 +261,7 @@ void Imprimir(char campo[9][9]){
 
 int main() {
 
-    int linha, coluna, vida = 0;
+    int linha, coluna, vida = 0, aux = 0;
 
     PreencherMatriz();
     GerarBombas();
