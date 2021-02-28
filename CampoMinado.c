@@ -35,6 +35,24 @@ void PreencherMatriz(){
     return;
 }
 
+void NovaBomba(){
+
+    int fileira = 0, coluna = 0;
+
+    fileira = rand() % 9;
+    coluna = rand() % 9;
+        
+    if (campoSYS[fileira][coluna] == 42)
+    {
+        NovaBomba();
+    }
+    else
+    {
+        campoSYS[fileira][coluna] = 42; 
+    } 
+
+}
+
 /* Função que gera as bombas em posições aleatórias*/
 void GerarBombas(){
     
@@ -52,7 +70,7 @@ void GerarBombas(){
             
         if (campoSYS[fileira][coluna] == 42)
         {
-            campoSYS[fileira+1][coluna] = 42;
+            NovaBomba();
         }
         else
         {
@@ -141,45 +159,38 @@ void RevelarBombaas(){
 void RevelarCampo(int linha, int coluna){
 
     int i, j;
-
     if (campoSYS[linha][coluna] == 32)
     {
         campoUSER[linha][coluna] = 32;
         campoSYS[linha][coluna] = 120;
 
-        for (i = linha -1; i <= linha+1; i++)
+        for  (i = linha-1; i <= linha+1; i++)
         {
-            if (i == linha)
-            {
+            if (i >= 0 && i <= 8){    
                 for (j = coluna-1; j <= coluna+1; j++)
                 {
-                    if (campoSYS[i][j] == 32 && j>= 0 && j <= 8)
-                    {
-                        RevelarCampo(i,j);
+                    if (j >= 0 && j <= 8){
+                        
+                        if (campoSYS[i][j] == 32 && ((i == linha-1 || i == linha+1 ) && (j == coluna-1 || j == coluna+1)))
+                        {
+                            continue;
+                        }
+                        if (campoSYS[i][j] == 32 && j >= 0 && j <= 8)
+                        {
+                            RevelarCampo(i, j);
+                        }
+                        else if (campoSYS[i][j] != 120 && campoSYS[i][j] != 42 && j >= 0 && j <= 8)
+                        {
+                            campoUSER[i][j] = campoSYS[i][j];
+                            campoSYS[i][j] = 120;
+                        }
                     }
-                    else if (campoSYS[i][j] != 120 && campoSYS[i][j] != 42 && j >= 0 && j <= 8 && ('1' <= campoSYS[i][coluna] <= '9'))
-                    {
-                        campoUSER[i][j] = campoSYS[i][j];
-                        campoSYS[i][j] = 120;
-                    }
                 }
-            }
-            else
-            {
-                if (campoSYS[i][coluna] == 32 && i >= 0 && i <= 8)
-                {
-                    RevelarCampo(i, coluna);
-                }
-                else if (campoSYS[i][coluna] != 120 && campoSYS[i][coluna] != 42 && (49 <= campoSYS[i][coluna] <= 57) && i >= 0 && i <= 8)
-                {
-                    campoUSER[i][coluna] = campoSYS[i][coluna];
-                    campoSYS[i][coluna] = 120;   
-                }
-            }
+            }  
         }
-       return; 
+        return;
     }
-    else if (campoSYS[linha][coluna] != 120 && campoSYS[linha][coluna] != 42 && (49 <= campoSYS[linha][coluna] <= 57))
+    else if (campoSYS[linha][coluna] != 120 && campoSYS[linha][coluna] != 42)
     {
         campoUSER[linha][coluna] = campoSYS[linha][coluna];
         campoSYS[linha][coluna] = 120;
@@ -187,6 +198,7 @@ void RevelarCampo(int linha, int coluna){
     }
 }
 
+/* Função que ajuda a verificar no final de cada jogada sem o usuário ganhou*/
 int Vitoria(){
 
     int i, j, aux = 0;
