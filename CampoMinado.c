@@ -25,8 +25,8 @@ void PreencherMatriz(){
 
     int i, j;
 
-    for (i = 0; i < 10; i++){
-        for (j = 0; j < 10; j++)
+    for (i = 0; i < 9; i++){
+        for (j = 0; j < 9; j++)
         {
             campoUSER[i][j] = -60;
             campoSYS[i][j] = 32;
@@ -255,19 +255,19 @@ int Jogada(int linha, int coluna){
 void Imprimir(char campo[9][9]){
 
     int i, j;
-
-    printf("     |0|1|2|3|4|5|6|7|8|\n");
+                
+    printf("   |0|1|2|3|4|5|6|7|8|\n");
 
     for (i = 0; i < 9; i++) {
-        printf(" |%d| ", i);
+        printf("|%d|", i);
         for (j = 0; j < 9; j++)
         {
             printf(" %c", campo[i][j]);
         }
-        printf("  |%d| ", i);
+        printf(" |%d|", i);
         printf("\n");
     }
-    printf("     |0|1|2|3|4|5|6|7|8|\n");
+    printf("   |0|1|2|3|4|5|6|7|8|\n");
     return;
 }
 
