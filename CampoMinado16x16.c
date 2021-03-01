@@ -58,7 +58,7 @@ void GerarBombas(){
     /* campoSYS[0][0] = 42; Sempre tem uma bomba na posição 0 0, pra casos de teste*/
 
     /* Preenchendo a matriz com as bombas*/
-    for (i = 0; i <= 40; i++)
+    for (i = 0; i <= 2; i++)
     {   
         fileira = rand() % 15;
         coluna = rand() % 15;
@@ -202,7 +202,7 @@ int Vitoria(){
     {
         for (j = 0; j < 16; j++)
         {
-            if ((campoUSER[i][j] >= 416 && campoUSER[i][j] <= 57) || campoUSER[i][j] == 32)
+            if ((campoUSER[i][j] >= 49 && campoUSER[i][j] <= 57) || campoUSER[i][j] == 32)
             {
                 aux++;
             }
@@ -283,6 +283,7 @@ int main() {
     GerarBombas();
     /*campoSYS[0][0] = 42;*/
     Dica();
+    system("cls");
 
     while (vida == 0)
     {
