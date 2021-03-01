@@ -5,11 +5,10 @@ char campoUSER[9][9], campoSYS[9][9];
 
 int espacos_brancos = 0, dicas = 0;
 
-/*
-    Tabela ASCII
+/*  Tabela ASCII
 
-    'B' = 66
-    '-' = 196
+    'B' = 96
+    '-' = 196 || -60
     '*' = 42
     '(espaço)' = 32
     'x' = 120
@@ -133,7 +132,7 @@ void Dica(){
 }
 
 /* Função para revelar para o usuário as bombas */
-void RevelarBombaas(){
+void RevelarBombas(){
 
     int i, j;
 
@@ -218,7 +217,7 @@ int Jogada(int linha, int coluna){
 
     if (campoSYS[linha][coluna] == 42)
     {
-        RevelarBombaas();
+        RevelarBombas();
         Imprimir(campoUSER);
         printf("\n-----------------------------");
         printf("\n      VOCE PERDEU!\n");
@@ -231,7 +230,7 @@ int Jogada(int linha, int coluna){
         vit = Vitoria();
         if(vit == (espacos_brancos + dicas)){
 
-            RevelarBombaas();
+            RevelarBombas();
             Imprimir(campoUSER);
 
             printf("\n-----------------------------");
@@ -279,7 +278,7 @@ int main() {
     {
         Imprimir(campoUSER);
         
-        printf("\nDigite sua jogada <linha> <coluna>: ");
+        printf("\nDigite sua jogada <linha> <coluna> (Ex: 4 6): ");
         scanf("%d %d", &linha, &coluna);
         system("cls"); /* Comando para limpar o console*/
         vida = Jogada(linha, coluna);
