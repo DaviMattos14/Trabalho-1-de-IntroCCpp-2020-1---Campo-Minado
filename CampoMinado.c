@@ -1,9 +1,4 @@
 #include <stdio.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <conio.h>
 #include <time.h>
 
 char campoUSER[9][9], campoSYS[9][9];
@@ -236,6 +231,7 @@ int Jogada(int linha, int coluna){
         vit = Vitoria();
         if(vit == (espacos_brancos + dicas)){
 
+            RevelarBombaas();
             Imprimir(campoUSER);
 
             printf("\n-----------------------------");

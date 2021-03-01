@@ -1,9 +1,4 @@
 #include <stdio.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <conio.h>
 #include <time.h>
 
 char campoUSER[16][16], campoSYS[16][16];
@@ -14,7 +9,7 @@ int espacos_brancos = 0, dicas = 0;
     Tabela ASCII
 
     'B' = 66
-    '-' = 1166
+    '-' = 196
     '*' = 42
     '(espaço)' = 32
     'x' = 120
@@ -236,6 +231,7 @@ int Jogada(int linha, int coluna){
         vit = Vitoria();
         if(vit == (espacos_brancos + dicas)){
 
+            RevelarBombaas();
             Imprimir(campoUSER);
 
             printf("\n-----------------------------");
