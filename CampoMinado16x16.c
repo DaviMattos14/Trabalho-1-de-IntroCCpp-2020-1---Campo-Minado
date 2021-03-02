@@ -1,4 +1,12 @@
+/*
+    Jogo: Campo Minado
+
+    Nomes: Davi dos Santos Mattos - 119133049
+           Lucas Alves Vianna - 119150609
+*/
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 char campoUSER[16][16], campoSYS[16][16];
@@ -58,7 +66,7 @@ void GerarBombas(){
     /* campoSYS[0][0] = 42; Sempre tem uma bomba na posição 0 0, pra casos de teste*/
 
     /* Preenchendo a matriz com as bombas*/
-    for (i = 0; i <= 40; i++)
+    for (i = 0; i <= 2; i++)
     {   
         fileira = rand() % 15;
         coluna = rand() % 15;

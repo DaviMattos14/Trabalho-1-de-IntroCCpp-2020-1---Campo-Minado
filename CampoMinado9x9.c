@@ -1,4 +1,12 @@
+/*
+    Jogo: Campo Minado
+
+    Nomes: Davi dos Santos Mattos - 119133049
+           Lucas Alves Vianna - 119150609
+*/
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 char campoUSER[9][9], campoSYS[9][9];
